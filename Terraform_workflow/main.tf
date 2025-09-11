@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_iam_role" "myrole" {
-  name = "myrole1"
+  name = "myrole"
   assume_role_policy = <<EOF
   {
     "Version" : "2012-10-17",
