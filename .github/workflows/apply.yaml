@@ -1,16 +1,18 @@
-name: Terraform apply changes
+
+name: Terraform PR Plan
+
 on:
-  workflow_run:
-    workflows: ["Terraform PR plan"]
-    types:
-      - completed
+  push:
+    paths:
+      - 'Terraform_workflow/**'
 
 permissions:
   contents: read
+  pull-requests: write
   id-token: write
 
 jobs:
-  apply:
+  plan:
     runs-on: ubuntu-latest
     env:
       TF_WORKING_DIR: Terraform_workflow
@@ -35,17 +37,33 @@ jobs:
           cd $TF_WORKING_DIR
           terraform init -input=false \
             -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
-            -backend-config="key=envs/test/terraform.tfstate" \
+            -backend-config="key=envs/pr/${{ github.head_ref }}.tfstate" \
             -backend-config="region=${{ secrets.AWS_REGION }}"
 
-      - name: Download Plan Artifact
+      - name: Terraform Format & Validate
+        run: |
+          cd $TF_WORKING_DIR
+          terraform fmt -check || true
+          terraform validate
+
+      - name: Terraform Plan
+        run: |
+          cd $TF_WORKING_DIR
+          terraform plan -input=false -out=tfplan
+          terraform show -no-color tfplan > plan.txt
+
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: Terraform_workflow/plan.txt
+
+      
+
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: tfplan
-          path: terraform_workflow/plan.txt
-
-
-      - name: Terraform apply
-        run: | 
-          cd $TF_WORKING_DIR
-          terraform apply -auto-approve plan.txt
+          path: Terraform_workflow/artifacts/
+      - name: Verify downloaded artifact
+        run: cat Terraform_workflow/artifacts/plan.txt
