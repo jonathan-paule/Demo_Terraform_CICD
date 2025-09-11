@@ -1,8 +1,7 @@
-
-name: Terraform PR Plan
+name: terraform plan and apply
 
 on:
-  push:
+  pull_request:
     paths:
       - 'Terraform_workflow/**'
 
@@ -52,18 +51,57 @@ jobs:
           terraform plan -input=false -out=tfplan
           terraform show -no-color tfplan > plan.txt
 
-      - name: Upload Plan Artifact
+      # Upload binary plan for apply
+      - name: Upload tfplan
         uses: actions/upload-artifact@v4
         with:
           name: tfplan
+          path: Terraform_workflow/tfplan
+
+      # Upload human-readable plan
+      - name: Upload plan.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: plan-text
           path: Terraform_workflow/plan.txt
+  
+  terraform_apply:
+    needs: plan
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      TF_WORKING_DIR: Terraform_workflow
 
-      
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Download artifact
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.5.7'
+
+      - name: Terraform Init
+        run: |
+          cd $TF_WORKING_DIR
+          terraform init -input=false \
+            -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
+            -backend-config="key=envs/prod/terraform.tfstate" \
+            -backend-config="region=${{ secrets.AWS_REGION }}"
+    
+      - name: Download tfplan
         uses: actions/download-artifact@v4
         with:
           name: tfplan
-          path: Terraform_workflow/artifacts/
-      - name: Verify downloaded artifact
-        run: cat Terraform_workflow/artifacts/plan.txt
+          path: Terraform_workflow/
+
+      - name: Terraform Apply
+        run: |
+          cd $TF_WORKING_DIR
+          terraform apply -auto-approve tfplan
