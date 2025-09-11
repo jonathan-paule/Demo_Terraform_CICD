@@ -36,6 +36,13 @@ jobs:
             -backend-config="key=envs/pr/${{ github.head_ref }}.tfstate" \
             -backend-config="region=${{ secrets.AWS_REGION }}"
 
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan
+          path: terraform_workflow/
+
+
       - name: Terraform apply
         run: | 
           cd $TF_WORKING_DIR
