@@ -63,4 +63,4 @@ jobs:
           name: my-artifact
           path: Terraform_workflow/artifacts/
       - name: Verify downloaded artifact
-        run: cat Terraform+workflow/articfacts/artifact.txt
+        run: cat Terraform+workflow/articfacts/plan.txt
