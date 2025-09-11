@@ -56,3 +56,11 @@ jobs:
         with:
           name: tfplan
           path: Terraform_workflow/plan.txt
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+          path: Terraform_workflow/artifacts/
+      - name: Verify downloaded artifact
+        run: cat Terraform+workflow/articfacts/artifact.txt
