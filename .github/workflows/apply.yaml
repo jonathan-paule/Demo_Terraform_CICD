@@ -1,7 +1,7 @@
 name: terraform plan and apply
 
 on:
-  pull_request:
+  push:
     paths:
       - 'Terraform_workflow/**'
 
