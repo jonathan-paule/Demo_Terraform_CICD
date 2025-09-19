@@ -1,7 +1,9 @@
 name: terraform plan and apply
 
 on:
-  workflow_dispatch:
+  push:
+    paths: Terraform_workflow/**/*
+  
 
 permissions:
   contents: read
