@@ -3,9 +3,11 @@ provider "aws" {
 }
 
 module "EC2_mod" {
-  source = "../../modules/EC_instance/" 
-  vpc_id= "vpc-0306a6c9d13570470"
-  ami= "ami-02d26659fd82cf299"
+  source = "../../modules/IAM_user_policy_attached/"
+  user_name= paul
+  policy_arns = ["arn:aws:iam::aws:policy/AmazonS3FullAccess","arn:aws:iam::aws:policy/AmazonEC2FullAccess"]
+
+  
 
 
 }
