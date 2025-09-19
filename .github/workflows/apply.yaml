@@ -35,7 +35,7 @@ jobs:
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: ./Terraform_workflow  
+          directory: ./Terraform_workflow/env 
           soft_fail: false              
 
       - name: Terraform Init
