@@ -2,7 +2,7 @@ name: terraform plan and apply
 
 on:
   push:
-    paths: Terraform_workflow/**/*
+    paths: Terraform_workflow/env/**/*
   
 
 permissions:
