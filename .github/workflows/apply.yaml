@@ -36,12 +36,6 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: '1.5.7'
-    
- #     - name: Run Checkov
- #       uses: bridgecrewio/checkov-action@master
-  #      with:
-   #       directory: ./Terraform_workflow/env 
-    #      soft_fail: false              
 
       - name: Terraform Init
         run: |
@@ -63,14 +57,6 @@ jobs:
           terraform plan -input=false -out=tfplan
           terraform show -no-color tfplan > plan.txt
 
-      # Upload binary plan for apply
-      - name: Upload tfplan
-        uses: actions/upload-artifact@v4
-        with:
-           name: tfplan-${{ matrix.env }}
-           path: ${{ env.TF_WORKING_DIR }}/tfplan
-
-      # Upload human-readable plan
       - name: Upload plan.txt
         uses: actions/upload-artifact@v4
         with:
@@ -80,13 +66,11 @@ jobs:
   terraform_apply:
     needs: plan
     runs-on: ubuntu-latest
-    #environment: production
     strategy:
       matrix:
-        env: [dev, test]    # match plan job
+        env: [dev, test]   
     env:
       TF_WORKING_DIR: Terraform_workflow/env/${{ matrix.env }}
-
 
     steps:
       - uses: actions/checkout@v4
@@ -110,15 +94,9 @@ jobs:
             -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
             -backend-config="key=envs/${{ matrix.env }}/terraform.tfstate" \
             -backend-config="region=${{ secrets.AWS_REGION }}"
-    
-      - name: Download tfplan
-        uses: actions/download-artifact@v4
-        with:
-          name: tfplan-${{ matrix.env }}
-          path: ${{ env.TF_WORKING_DIR }}
 
-
-      - name: Terraform Apply
+      - name: Terraform Plan & Apply
         run: |
           cd $TF_WORKING_DIR
+          terraform plan -input=false -out=tfplan
           terraform apply -auto-approve tfplan
