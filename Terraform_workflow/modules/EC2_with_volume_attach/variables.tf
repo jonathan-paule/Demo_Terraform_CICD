@@ -13,7 +13,6 @@ variable "tags" {
 variable "sg_name" {
     description = "name of security group"
     type = string
-    default = "ec2_sg"
   
 }
 
