@@ -1,7 +1,6 @@
 variable "key_name" {
     description = "name of key pair"
     type = string
-    default = "my_key_pair"
   
 }
 
