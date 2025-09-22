@@ -10,6 +10,7 @@ module "EC2_mod" {
   key_name= "key1"
   tag_name= "ec2_dev"
   sg_name ="dev_sg"
+  env ="dev"
 
 
 
