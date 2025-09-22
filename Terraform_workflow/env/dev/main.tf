@@ -4,7 +4,7 @@ provider "aws" {
 
 module "EC2_mod" {
   source = "../../modules/s3_creation"
-  bucket_name = "hello123bucket978erf"
+  bucket_name = "hello123bucket978rf"
 
 
 
