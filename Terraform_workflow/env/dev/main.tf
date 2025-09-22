@@ -3,13 +3,12 @@ provider "aws" {
 }
 
 module "EC2_mod" {
-  source = "../../modules/VPC"
-  cidr_block = "10.0.0.0/16"
-  ami = "ami-02d26659fd82cf299"
-  private_cidr ="10.0.2.0/24" 
-  public_cidr= "10.0.1.0/24"
-  key_name = "vpc_key"
-  az = "ap-south-1a"
+  source = "../../modules/Lambda_api_gateway"
+  function_name= "get_hotel_rooms"
+  handler= "lambda_file.lambda_handler"
+  runtime= "python3.12"
+  filename= "lambda_file.zip"
+  route_key= "GET /get_hotel_rooms"
 
 
 
