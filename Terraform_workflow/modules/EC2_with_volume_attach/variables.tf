@@ -4,7 +4,7 @@ variable "key_name" {
   
 }
 
-variable "tags" {
+variable "tag_name" {
     description = "name of tag"
     type = string
 }
