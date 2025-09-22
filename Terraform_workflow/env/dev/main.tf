@@ -8,7 +8,6 @@ module "EC2_mod" {
   function_name= "get_hotel_rooms"
   handler= "lambda_file.lambda_handler"
   runtime= "python3.12"
-  filename= "lambda_file.zip"
   route_key= "GET /get_hotel_rooms"
 
 
