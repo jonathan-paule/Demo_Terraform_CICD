@@ -8,7 +8,7 @@ module "EC2_mod" {
   ami_id= "ami-02d26659fd82cf299"
   vpc_id= "vpc-0306a6c9d13570470"
   key_name ="key2"
-  tags = "ec2_test"
+  tag_name = "ec2_test"
   sg_name = "test_sg"
 
 }
