@@ -14,8 +14,12 @@ permissions:
 jobs:
   plan:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        env: [dev, test]   
+    if: contains(github.event.head_commit.message, matrix.env) || contains(join(github.event.commits.*.modified, ''), format('Terraform_workflow/env/{0}', matrix.env))
     env:
-      TF_WORKING_DIR: Terraform_workflow
+      TF_WORKING_DIR: Terraform_workflow/env/${{ matrix.env }}
 
     steps:
       - uses: actions/checkout@v4
@@ -43,7 +47,7 @@ jobs:
           cd $TF_WORKING_DIR
           terraform init -input=false \
             -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
-            -backend-config="key=envs/pr/${{ github.head_ref }}.tfstate" \
+            -backend-config="key=envs/${{ matrix.env }}/terraform.tfstate" \
             -backend-config="region=${{ secrets.AWS_REGION }}"
 
       - name: Terraform Format & Validate
@@ -62,22 +66,26 @@ jobs:
       - name: Upload tfplan
         uses: actions/upload-artifact@v4
         with:
-          name: tfplan
-          path: Terraform_workflow/tfplan
+           name: tfplan-${{ matrix.env }}
+           path: ${{ env.TF_WORKING_DIR }}/tfplan
 
       # Upload human-readable plan
       - name: Upload plan.txt
         uses: actions/upload-artifact@v4
         with:
-          name: plan-text
-          path: Terraform_workflow/plan.txt
+           name: plan-text-${{ matrix.env }}
+           path: ${{ env.TF_WORKING_DIR }}/plan.txt
   
   terraform_apply:
     needs: plan
     runs-on: ubuntu-latest
     #environment: production
+    strategy:
+      matrix:
+        env: [dev, test]    # match plan job
     env:
-      TF_WORKING_DIR: Terraform_workflow
+      TF_WORKING_DIR: Terraform_workflow/env/${{ matrix.env }}
+
 
     steps:
       - uses: actions/checkout@v4
@@ -99,14 +107,15 @@ jobs:
           cd $TF_WORKING_DIR
           terraform init -input=false \
             -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
-            -backend-config="key=envs/prod/terraform.tfstate" \
+            -backend-config="key=envs/${{ matrix.env }}/terraform.tfstate" \
             -backend-config="region=${{ secrets.AWS_REGION }}"
     
       - name: Download tfplan
         uses: actions/download-artifact@v4
         with:
-          name: tfplan
-          path: Terraform_workflow/
+          name: tfplan-${{ matrix.env }}
+          path: ${{ env.TF_WORKING_DIR }}
+
 
       - name: Terraform Apply
         run: |
