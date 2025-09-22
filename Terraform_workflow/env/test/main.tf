@@ -9,5 +9,6 @@ module "EC2_mod" {
   vpc_id= "vpc-0306a6c9d13570470"
   key_name ="key2"
   tags = "ec2_test"
+  sg_name = "test_sg"
 
 }
