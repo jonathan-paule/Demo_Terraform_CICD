@@ -8,14 +8,14 @@ resource "tls_private_key" "mynewkey" {
 
 
 resource "aws_key_pair" "my_key_pair" {
-   key_name = var.key_name
+   key_name = "${var.key_name}-${var.env}"  
    public_key = tls_private_key.mynewkey.public_key_openssh
  }
 
 
 # create security group
 resource "aws_security_group" "ec2_security_group" {
-   name = var.sg_name
+   name = "${var.sg_name}-${var.env}"
    description = "allow ssh, http and https inbound"
    vpc_id = var.vpc_id
 
