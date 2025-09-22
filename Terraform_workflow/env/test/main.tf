@@ -7,5 +7,6 @@ module "EC2_mod" {
   az= "ap-south-1b"
   ami_id= "ami-02d26659fd82cf299"
   vpc_id= "vpc-0306a6c9d13570470"
+  key_name ="key2"
 
 }
