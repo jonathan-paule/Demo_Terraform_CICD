@@ -8,7 +8,7 @@ module "EC2_mod" {
   ami_id= "ami-02d26659fd82cf299"
   vpc_id= "vpc-0306a6c9d13570470"
   key_name= "key1"
-  tags= "ec2_dev"
+  tag_name= "ec2_dev"
   sg_name ="dev_sg"
 
 
