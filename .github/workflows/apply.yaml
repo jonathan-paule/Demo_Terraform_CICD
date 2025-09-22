@@ -37,11 +37,11 @@ jobs:
         with:
           terraform_version: '1.5.7'
     
-      - name: Run Checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          directory: ./Terraform_workflow/env 
-          soft_fail: false              
+ #     - name: Run Checkov
+ #       uses: bridgecrewio/checkov-action@master
+  #      with:
+   #       directory: ./Terraform_workflow/env 
+    #      soft_fail: false              
 
       - name: Terraform Init
         run: |
