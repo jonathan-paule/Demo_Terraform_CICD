@@ -4,6 +4,14 @@ variable "key_name" {
   
 }
 
+
+
+variable "env" {
+    description = "name of key env"
+    type = string
+  
+}
+
 variable "tag_name" {
     description = "name of tag"
     type = string
