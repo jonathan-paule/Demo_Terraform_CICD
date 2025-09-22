@@ -75,7 +75,7 @@ jobs:
   terraform_apply:
     needs: plan
     runs-on: ubuntu-latest
-    environment: production
+    #environment: production
     env:
       TF_WORKING_DIR: Terraform_workflow
 
