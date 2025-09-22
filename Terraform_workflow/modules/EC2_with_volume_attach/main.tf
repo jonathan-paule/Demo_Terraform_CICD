@@ -88,7 +88,7 @@ resource "aws_instance" "terraform_test" {
 
 
  tags = {
-   Name = "var.tags"
+   Name = var.tag_name
  }
 }
 
