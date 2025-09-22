@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         env: [dev, test]   
-    if: contains(github.event.head_commit.message, matrix.env) || contains(join(github.event.commits.*.modified, ''), format('Terraform_workflow/env/{0}', matrix.env))
     env:
       TF_WORKING_DIR: Terraform_workflow/env/${{ matrix.env }}
 
