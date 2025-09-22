@@ -3,14 +3,8 @@ provider "aws" {
 }
 
 module "EC2_mod" {
-  source = "../../modules/EC2_with_volume_attach"
-  az= "ap-south-1a"
-  ami_id= "ami-02d26659fd82cf299"
-  vpc_id= "vpc-0306a6c9d13570470"
-  key_name= "key1"
-  tag_name= "ec2_dev"
-  sg_name ="dev_sg"
-  env ="dev"
+  source = "../../modules/s3_creation"
+  bucket_name = "hello123bucket978"
 
 
 
