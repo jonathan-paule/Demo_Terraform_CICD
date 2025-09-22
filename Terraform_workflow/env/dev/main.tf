@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "EC2_mod" {
-  source = "../../modules/IAM_user_policy_attachment"
+  source = "../../modules/IAM_user_policy_attachment/"
   user_name= john_paul
   policy_arns = ["arn:aws:iam::aws:policy/AmazonS3FullAccess","arn:aws:iam::aws:policy/AmazonEC2FullAccess"]
 
