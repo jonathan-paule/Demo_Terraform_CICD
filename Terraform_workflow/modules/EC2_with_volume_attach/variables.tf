@@ -4,6 +4,12 @@ variable "key_name" {
   
 }
 
+variable "tags" {
+    description = "name of tag"
+    type = string
+}
+
+
 variable "sg_name" {
     description = "name of security group"
     type = string
