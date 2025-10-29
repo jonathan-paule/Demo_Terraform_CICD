@@ -35,19 +35,19 @@ A collection of reusable, self-contained Terraform modules for creating specific
 
 ***Modules Included:**
 
-1.ec2-instance: For basic EC2 instance creation.
+**1.ec2-instance:** For basic EC2 instance creation.
 
-2.ec2-volume: For creating an EC2 instance with an attached EBS volume.
+**2.ec2-volume:** For creating an EC2 instance with an attached EBS volume.
 
-3.iam-role-policy: For creating an IAM Role and attaching necessary policies.
+**3.iam-role-policy:** For creating an IAM Role and attaching necessary policies.
 
-4.iam-user-policy: For creating an IAM User and attaching necessary policies.
+**4.iam-user-policy:** For creating an IAM User and attaching necessary policies.
 
-5.lambda-api-gateway: For deploying an AWS Lambda function and exposing it via an API Gateway.
+**5.lambda-api-gateway:** For deploying an AWS Lambda function and exposing it via an API Gateway.
 
-6.vpc-network: For creating a complete custom Virtual Private Cloud (VPC), including subnets, route tables, and internet gateways.
+**6.vpc-network:** For creating a complete custom Virtual Private Cloud (VPC), including subnets, route tables, and internet gateways.
 
-7.s3-bucket: For creating an S3 Bucket with customizable settings (e.g., versioning, access control).
+**7.s3-bucket:** For creating an S3 Bucket with customizable settings (e.g., versioning, access control).
 
 ***terraform-workflow/env/:**
 
