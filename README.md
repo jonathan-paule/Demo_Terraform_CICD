@@ -8,7 +8,7 @@
 5. include kubernetes 
 
 
-------------------------------------------------------------------------------------------🌳 Terraform Project Repository---------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------🌳 Terraform Project Repository---------------------------------------------
 
 
 This repository hosts a comprehensive set of Terraform configurations for deploying various resources on Amazon Web Services (AWS), complete with a robust GitHub Actions CI/CD pipeline and multi-environment management.
