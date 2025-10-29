@@ -27,8 +27,3 @@ HTTPS (port 443)
 module "ec2_instance" {
   source         = "../../modules/ec2-instance"
 }
-
-🧭 **Usage Steps**
-terraform init
-terraform plan
-terraform apply
