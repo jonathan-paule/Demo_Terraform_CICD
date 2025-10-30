@@ -10,23 +10,23 @@
 
 🗺️ Configures route tables:
 
-Public route table routes traffic to the IGW.
+1.Public route table routes traffic to the IGW.
 
-Private route table isolates internal resources.
+2.Private route table isolates internal resources.
 
 🔐 Creates security groups:
 
-Public SG allows inbound SSH from anywhere.
+1.Public SG allows inbound SSH from anywhere.
 
-Private SG allows SSH only from the public EC2 instance.
+2.Private SG allows SSH only from the public EC2 instance.
 
 🔑 Generates and registers an AWS key pair using a locally created TLS key.
 
 💻 Launches two EC2 instances:
 
-One in the public subnet (accessible via SSH).
+1.One in the public subnet (accessible via SSH).
 
-One in the private subnet (accessible only from the public EC2).
+2.One in the private subnet (accessible only from the public EC2).
 
 🧠 **How to Call the Module (Example for dev environment)**
 
