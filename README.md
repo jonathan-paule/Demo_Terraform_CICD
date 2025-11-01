@@ -45,13 +45,15 @@ Each module follows the **DRY (Don’t Repeat Yourself)** principle, making infr
 
 | Module | Description |
 |:--------|:-------------|
-| [**1️⃣ ec2-instance**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/ec2-instance) | Deploys a basic EC2 instance |
-| [**2️⃣ ec2-volume**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/ec2-volume) | Creates an EC2 instance with an attached EBS volume |
-| [**3️⃣ iam-role-policy**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/iam-role-policy) | Configures an IAM Role with required policies |
-| [**4️⃣ iam-user-policy**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/iam-user-policy) | Creates IAM Users and attaches access policies |
-| [**5️⃣ lambda-api-gateway**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/lambda-api-gateway) | Deploys a Lambda function and exposes it via API Gateway |
-| [**6️⃣ vpc-network**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/vpc-network) | Creates a custom VPC with subnets, route tables, and gateways |
-| [**7️⃣ s3-bucket**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/s3-bucket) | Creates an S3 bucket with versioning and access controls |
+| [**1️⃣ EC2-instance**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/EC2_instance) | Deploys a basic EC2 instance |
+| [**2️⃣ EC2-volume**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/EC2_with_volume_attach) | Creates an EC2 instance with an attached EBS volume |
+| [**3️⃣ iam-role-policy**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/IAM_role_policy_attachment) | Configures an IAM Role with required policies |
+| [**4️⃣ iam-user-policy**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/IAM_user_create_policy_attachment) | Creates IAM Users and attaches access policies |
+| [**5️⃣ lambda-api-gateway**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/Lambda_api_gateway) | Deploys a Lambda function and exposes it via API Gateway |
+| [**7️⃣ RDS**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/RDS) | Provisions an Amazon RDS instance |
+
+| [**6️⃣ vpc-network**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/VPC) | Creates a custom VPC with subnets, route tables, and gateways |
+| [**7️⃣ s3-bucket**](https://github.com/jonathan-paule/Demo_Terraform_CICD/tree/main/Terraform_workflow/modules/s3_creation) | Creates an S3 bucket with versioning and access controls |
 
 ---
 
