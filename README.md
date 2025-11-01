@@ -45,13 +45,13 @@ Each module follows the **DRY (Don’t Repeat Yourself)** principle, making infr
 
 | Module | Description |
 |:--------|:-------------|
-| **1️⃣ ec2-instance** | Deploys a basic EC2 instance |
-| **2️⃣ ec2-volume** | Creates an EC2 instance with an attached EBS volume |
-| **3️⃣ iam-role-policy** | Configures an IAM Role with required policies |
-| **4️⃣ iam-user-policy** | Creates IAM Users and attaches access policies |
-| **5️⃣ lambda-api-gateway** | Deploys a Lambda function and exposes it via API Gateway |
-| **6️⃣ vpc-network** | Creates a custom VPC with subnets, route tables, and gateways |
-| **7️⃣ s3-bucket** | Creates an S3 bucket with versioning and access controls |
+| [**1️⃣ ec2-instance**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/ec2-instance) | Deploys a basic EC2 instance |
+| [**2️⃣ ec2-volume**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/ec2-volume) | Creates an EC2 instance with an attached EBS volume |
+| [**3️⃣ iam-role-policy**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/iam-role-policy) | Configures an IAM Role with required policies |
+| [**4️⃣ iam-user-policy**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/iam-user-policy) | Creates IAM Users and attaches access policies |
+| [**5️⃣ lambda-api-gateway**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/lambda-api-gateway) | Deploys a Lambda function and exposes it via API Gateway |
+| [**6️⃣ vpc-network**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/vpc-network) | Creates a custom VPC with subnets, route tables, and gateways |
+| [**7️⃣ s3-bucket**](https://github.com/yourusername/yourrepo/tree/main/terraform-workflow/modules/s3-bucket) | Creates an S3 bucket with versioning and access controls |
 
 ---
 
