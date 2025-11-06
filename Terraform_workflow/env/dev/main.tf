@@ -3,12 +3,9 @@ provider "aws" {
 }
 
 module "EC2_mod" {
-  source = "../../modules/Lambda_api_gateway"
-  filename = "${path.module}/../../modules/lambda.zip"
-  function_name= "get_hotel_rooms"
-  handler= "lambda_file.lambda_handler"
-  runtime= "python3.12"
-  route_key= "GET /get_hotel_rooms"
+  source = "../../modules/s3_creation
+  bucket_name= localbucket_77744_123
+  
 
 
 
