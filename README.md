@@ -25,7 +25,7 @@ The project is designed for clarity, scalability, and modularity — separating 
 
 ### 📁 **.github/workflows/**
 Contains the **GitHub Actions** workflow YAML file responsible for automating the **Terraform lifecycle**:  
-`terraform init → terraform plan → terraform plan`  → terraform apply`
+`terraform init → terraform plan → terraform plan → terraform apply `
 
 This ensures every infrastructure change is **tested, reviewed, and deployed automatically**.
 
