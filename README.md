@@ -25,7 +25,7 @@ The project is designed for clarity, scalability, and modularity — separating 
 
 ### 📁 **.github/workflows/**
 Contains the **GitHub Actions** workflow YAML file responsible for automating the **Terraform lifecycle**:  
-`terraform init → terraform plan → terraform plan → terraform apply `
+`terraform init → terraform plan → terraform apply `
 
 This ensures every infrastructure change is **tested, reviewed, and deployed automatically**.
 
@@ -75,6 +75,7 @@ Each environment maintains its own **S3 remote backend** for isolated and durabl
 ## 🔁 CI/CD Integration
 
 The **GitHub Actions pipeline** automates:
+- ✅ `checkov` → Performs security and compliance scans on Terraform code  
 - ✅ `terraform init` → Initializes backend
 - ✅ `terraform fmt` → Formats Terraform configuration files for consistent style  
 - ✅ `terraform validate` → Validates the configuration for syntax and logical errors 
