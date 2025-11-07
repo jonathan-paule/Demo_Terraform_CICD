@@ -75,7 +75,9 @@ Each environment maintains its own **S3 remote backend** for isolated and durabl
 ## 🔁 CI/CD Integration
 
 The **GitHub Actions pipeline** automates:
-- ✅ `terraform init` → Initializes backend  
+- ✅ `terraform init` → Initializes backend
+- ✅ `terraform fmt` → Formats Terraform configuration files for consistent style  
+- ✅ `terraform validate` → Validates the configuration for syntax and logical errors 
 - ✅ `terraform plan` → Previews infrastructure changes  
 - ✅ `terraform apply` → Deploys after approval  
 
