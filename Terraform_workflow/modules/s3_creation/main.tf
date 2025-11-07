@@ -8,6 +8,11 @@ resource "aws_s3_bucket" "my_bucket" {
   
 }
 
+resource "aws_s3_bucket" "log_bucket" {
+  bucket = var.log_bucket
+  
+}
+
 resource "aws_s3_bucket_versioning" "version" {
     bucket = aws_s3_bucket.my_bucket.id 
 
