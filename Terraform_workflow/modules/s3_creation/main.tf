@@ -25,12 +25,11 @@ resource "aws_s3_bucket" "my_bucket" {
       expiration  {
         days = 90
     }
-    
-  
-     
+         
    
  
    }
+}
 
 resource "aws_s3_bucket" "log_bucket" {
   bucket = var.log_bucket
