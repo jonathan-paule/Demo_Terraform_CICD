@@ -38,6 +38,41 @@ resource "aws_s3_bucket" "my_bucket" {
     
   }
  }
+
+resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
+   bucket = aws_s3_bucket.log_bucket.id
+   rule {
+    
+      id      = "expire"
+      status  = "Enabled"
+      filter {
+        
+       prefix = "logs/"
+      }
+      transition {
+        days          = 30
+        storage_class = "STANDARD_IA"
+    }
+  
+      expiration  {
+        days = 90
+    }
+   }
+  
+    rule {
+
+      id = "log1"
+      status = "Enabled"
+      filter{}
+      abort_incomplete_multipart_upload {
+       days_after_initiation = 7
+   }
+    
+  }
+ }
+
+
+
    
  
    
