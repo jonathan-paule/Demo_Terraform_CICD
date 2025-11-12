@@ -7,6 +7,14 @@ resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
 }
 
+
+resource "aws_s3_bucket_public_access_block" "access_good_1" {
+   bucket = aws_s3_bucket.my_bucket.id
+
+   block_public_acls   = true
+   block_public_policy = true
+ }
+
  resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
    bucket = aws_s3_bucket.my_bucket.id
    rule {
@@ -81,6 +89,15 @@ resource "aws_s3_bucket" "log_bucket" {
   bucket = var.log_bucket
   
 }
+
+
+resource "aws_s3_bucket_public_access_block" "access_good_2" {
+   bucket = aws_s3_bucket.log_bucket.id
+
+   block_public_acls   = true
+   block_public_policy = true
+ }
+
 
 
 resource "aws_s3_bucket_versioning" "version1" {
