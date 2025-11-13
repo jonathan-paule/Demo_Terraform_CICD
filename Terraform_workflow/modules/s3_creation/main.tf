@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
 }
 
-resource "aws_kms_key" "mykey" {
+resource "aws_kms_key" "example" {
   description = "KMS key "
   policy      = <<POLICY
   {
@@ -108,6 +108,8 @@ resource "aws_s3_bucket_public_access_block" "access_good_1" {
 
 resource "aws_sns_topic" "bucket_notifications" {
   name = "bucket-notifications"
+  kms_master_key_id = aws_kms_key.mykey.arn
+
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
