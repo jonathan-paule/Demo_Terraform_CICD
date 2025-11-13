@@ -7,6 +7,29 @@ resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
 }
 
+resource "aws_kms_key" "example" {
+  description = "KMS key "
+  policy      = <<POLICY
+  {
+    "Version": "2012-10-17",
+    "Id": "default",
+    "Statement": [
+      {
+        "Sid": "DefaultAllow",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::251985278967:root"
+        },
+        "Action": "kms:*",
+        "Resource": "*"
+      }
+    ]
+  }
+POLICY
+}
+
+
+
 
 resource "aws_kms_key" "mykey" {
   description             = "KMS key for S3 bucket encryption"
