@@ -5,7 +5,7 @@ provider "aws" {
 module "EC2_mod" {
   source = "../../modules/s3_creation
   bucket_name= localbucket_77744_123
-  log_bucket= mylog9765442743433409
+  log_bucket= mylog9765442743433476
   
 
 
