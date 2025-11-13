@@ -34,6 +34,7 @@ POLICY
 resource "aws_kms_key" "mykey" {
   description             = "KMS key for S3 bucket encryption"
   deletion_window_in_days = 10
+  is_enabled              = true
   enable_key_rotation     = true
 }
 
