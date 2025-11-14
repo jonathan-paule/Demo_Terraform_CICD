@@ -5,7 +5,7 @@ provider "aws" {
 module "EC2_mod" {
   source = "../../modules/s3_creation
   bucket_name= localbucket_77744_123
-  log_bucket= mylog976544274343347764
+  log_bucket= mylog9765442743433477676
   enable_key_rotation = true
 
   
